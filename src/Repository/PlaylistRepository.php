@@ -90,4 +90,13 @@ class PlaylistRepository extends ServiceEntityRepository
                             ->getResult();
         }
     }
+    public function findAllOrderByAmount($ordre): array
+    {
+        return $this->createQueryBuilder('p')
+                ->leftjoin('p.formations', 'f')
+                ->groupBy('p.id')
+                ->orderBy('count(f.id)', $ordre)
+                ->getQuery()
+                ->getResult();
+    }
 }
