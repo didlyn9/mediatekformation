@@ -1,0 +1,11 @@
+    {{ form_start(formPlaylist) }}
+        <div class="row">
+            {{ form_row(formPlaylist.name, {'label' : 'Nom de la playlist'}) }}
+            <br>
+            {{ form_row(formPlaylist.description) }}
+            <br>
+            {{ form_row(formPlaylist.formations, {'attr': {'size': 25}, 'label': 'Formation(s)'}) }}
+            <br>
+            {{ form_row(formPlaylist.submit, {'attr': {'onclick': 'return confirm(Veuillez confirmer")'}}) }}
+        </div>
+    {{ form_end(formPlaylist) }}

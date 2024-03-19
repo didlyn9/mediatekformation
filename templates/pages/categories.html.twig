@@ -1,0 +1,20 @@
+{# empty Twig template #}
+{% extends "basefront.html.twig" %}
+{% block body %}
+    <table class="table table-striped">
+        <caption>tableau des catégories</caption>
+        <tr>
+        <br/>
+        <tbody>
+            {% for categorie in categories %}
+            <tr>
+                <td>
+                    <h5 class="text-info">
+                        {{ categorie.name }}
+                    </h5>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

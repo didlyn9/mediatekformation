@@ -4,26 +4,18 @@
 {% block stylesheets %}{% endblock %}
 {% block top %}
     <div class="container">
-        <!-- titre -->
-        <div class="text-left">
-            <img src="{{ app.request.getBasePath()~'/banniere.jpg' }}" alt="image de la bannière" >
-        </div>
-        <!-- menu -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('accueil') }}">Accueil</a>
+                        <a class="nav-link" href="{{ path('admin.formations') }}">Formations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('formations') }}">Formations</a>
+                        <a class="nav-link" href="{{ path('admin.playlists') }}">Playlists</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('playlists') }}">Playlists</a>
-                    </li>
-                                        <li class="nav-item">
-                        <a class="nav-link" href="{{ path('categories') }}">Catégories</a>
-                    </li>      
+                        <a class="nav-link" href="{{ path('admin.categories')}}">Catégories</a>
+                    </li>                    
                 </ul>
             </div>
         </nav>        
@@ -33,11 +25,10 @@
 {% block footer %}
     <div class="container text-center">
         <footer>
-            <hr>
-            <p><small><strong>
+            <hr/>
+            <p><small><i>
                 Consultez nos <a class="link-secondary" href="{{ path('cgu') }}">Conditions Générales d'Utilisation</a>
-            </strong></small></p>
-            
+            </i></small></p>
         </footer>
     </div>
 {% endblock %}
