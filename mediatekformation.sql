@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 19 mars 2024 à 11:54
+-- Généré le : mar. 19 mars 2024 à 12:46
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -74,7 +74,7 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20220902060409', '2022-09-02 06:04:28', 72),
 ('DoctrineMigrations\\Version20220902061351', '2022-09-02 06:14:16', 303),
 ('DoctrineMigrations\\Version20220904053453', '2022-09-04 05:36:24', 237),
-('DoctrineMigrations\\Version20240319115145', '2024-03-19 11:51:59', 160);
+('DoctrineMigrations\\Version20240319124140', '2024-03-19 12:41:48', 65);
 
 -- --------------------------------------------------------
 
@@ -718,8 +718,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `roles` json NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `keycloak_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `roles`, `password`, `keycloak_id`) VALUES
+(1, 'adminmedia@dom.com', '[\"ROLE_ADMIN\"]', '', '9d7de884-b07c-4c93-96e4-daa11617fc8a');
 
 --
 -- Contraintes pour les tables déchargées
