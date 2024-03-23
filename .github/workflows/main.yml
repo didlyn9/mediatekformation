@@ -1,25 +1,18 @@
+on: [push]
 name: Deploy website on push
-
-on:
-  push:
-    branches:
-      - prod-v2
-
 jobs:
-  deploy:
-    name: Deploy via SFTP
+  web-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
-    - name: SFTP Deploy
-      uses: easingthemes/ssh-deploy@v2.1.5
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.FTP_PASSWORD }}
-        ARGS: "-avzr --delete"
-        SOURCE: "." #
-        REMOTE_HOST: "51.75.26.163" # L'adresse IP de ton VPS
-        REMOTE_USER: "debian" # Ton utilisateur SSH sur le VPS
-        REMOTE_PORT: "22" # Port SSH (22 est le port par défaut pour SSH)
-        TARGET: "/var/www/html/" # Le chemin vers le répertoire cible sur ton VPS
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Deploy file
+          uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+          with:
+            username: debian
+            server: 51.75.26.163
+            port: 22
+            local_path: './*'
+            remote_path: '/var/www/html/'
+            sftp_only: true
+            password: ${{ secrets.FTP_PASSWORD }} 
