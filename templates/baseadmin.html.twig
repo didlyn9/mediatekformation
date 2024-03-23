@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+{% block stylesheets %}{% endblock %}
+{% block top %}
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin.formations') }}">Formations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin.playlists') }}">Playlists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin.categories')}}">Catégories</a>
+                    </li>                    
+                </ul>
+            </div>
+            <div class="text-end">
+            <a href="{{ path('logout') }}" class="text-decoration-none text-info">Se déconnecter‎&nbsp&nbsp</a>
+            </div>
+        </nav>        
+    </div>
+{% endblock %}
+{% block body %}{% endblock %}
+{% block footer %}
+    <div class="container text-center">
+        <footer>
+            <hr/>
+            <p><small><i>
+                Consultez nos <a class="link-secondary" href="{{ path('cgu') }}">Conditions Générales d'Utilisation</a>
+            </i></small></p>
+        </footer>
+    </div>
+{% endblock %}
+{% block javascripts %}{% endblock %}

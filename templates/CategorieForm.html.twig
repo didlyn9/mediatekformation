@@ -1,0 +1,16 @@
+{{ form_start(formCategorie) }}
+        <div class="row">
+            {{ form_row(formCategorie.name, {'label' : 'Nom de la catégorie'}) }}
+            <br>
+            {{ form_row(formCategorie.formations, {'attr': {'size': 25}, 'label': 'Formation(s)'}) }}
+            <br>
+            <br />
+            <br />
+            {{ form_row(formCategorie.submit, {'attr': {'onclick': 'return confirm(Veuillez confirmer")'}}) }}
+        </div>
+            {{ form_end(formCategorie) }}
+            {% if categorie.id != null %}
+                    <a href="{{ path('admin.categorie.edit', {id:categorie.id }) }}" class="btn btn-info me-md-2">Annuler</a>
+            {% endif %}
+        </div>
+    {{ form_end(formCategorie) }}
