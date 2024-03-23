@@ -6,18 +6,20 @@ on:
       - prod-v2
 
 jobs:
-  web-deploy:
-    name: Deploy
+  deploy:
+    name: Deploy via SFTP
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Get latest code
+    - name: Checkout code
       uses: actions/checkout@v2
       
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.0
-      with:
-        server: 51.75.26.163
-        server-dir: /var/www/html/
-        username: debian
-        password: ${{ secrets.FTP_PASSWORD }}
+    - name: SFTP Deploy
+      uses: easingthemes/ssh-deploy@v2.1.5
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.FTP_PASSWORD }}
+        ARGS: "-avzr --delete"
+        SOURCE: "." #
+        REMOTE_HOST: "51.75.26.163" # L'adresse IP de ton VPS
+        REMOTE_USER: "debian" # Ton utilisateur SSH sur le VPS
+        REMOTE_PORT: "22" # Port SSH (22 est le port par défaut pour SSH)
+        TARGET: "/var/www/html/" # Le chemin vers le répertoire cible sur ton VPS
